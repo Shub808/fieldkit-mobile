@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Types, lint, tests and web export
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm test -- --ci
+
+      # The web export is the closest thing to a build this project has in CI:
+      # it runs the real Metro bundler over every screen, so an import error
+      # or a native-only API leaking into shared code fails here rather than
+      # on a device.
+      - name: Web export
+        run: npm run export:web
+
+      - name: Upload web export
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-export
+          path: dist
+          retention-days: 7
