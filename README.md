@@ -6,7 +6,7 @@ A React Native (Expo) app for field technicians who work where there is no signa
 
 | | |
 |---|---|
-| **Live demo** | _not deployed — see [Status](#status-and-honest-limits)_ |
+| **Live demo** | [shub808.github.io/fieldkit-mobile/](https://shub808.github.io/fieldkit-mobile/) |
 | **Stack** | Expo SDK 58 · React Native 0.88 · React 19 · expo-router · TypeScript (strict+) · AsyncStorage · Jest + React Native Testing Library |
 | **Tests** | 122 passing (Jest): 5 unit suites in a Node project, 2 component suites in a `jest-expo` project |
 | **Quality gates** | `tsc --noEmit` · ESLint 9 (flat, `eslint-config-expo`) · Jest · `expo export --platform web` — all pass locally, all run in CI |
@@ -59,7 +59,7 @@ Requires Node 22 (as used in CI). No environment variables are needed (`.env.exa
 - **Verified:** typecheck, lint, 122 Jest tests and the web export pass. The web build was driven in headless Chromium to capture the screenshots above, including the offline, queued and conflict states.
 - **Not verified on a device.** I had no iOS/Android device or simulator in the environment where this was built. The app is written for native, but it has only been exercised through Jest and the react-native-web build.
 - **The backend is simulated.** `SimulatedRemote` is an in-memory stand-in with configurable offline/latency/failure. There is no real server, authentication, or push notification, and no native features (camera, GPS, background sync) are used or claimed.
-- **Not deployed.** No hosting account was available.
+- **Web demo only.** The live link is the Expo web build on GitHub Pages; the native iOS and Android apps are not published to any store.
 - **Merge scope.** The merge handles the job fields modelled here; it is not a general CRDT.
 
 ## License
