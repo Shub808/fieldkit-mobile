@@ -30,8 +30,9 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# local env files — the template is committed on purpose, real values never are
+.env*
+!.env.example
 
 # typescript
 *.tsbuildinfo
@@ -39,3 +40,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Web export output
+/dist/

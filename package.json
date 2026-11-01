@@ -1,22 +1,53 @@
 {
   "name": "fieldkit-mobile",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "dependencies": {
+    "@expo/metro-runtime": "~58.0.15",
+    "@react-native-async-storage/async-storage": "~3.1.1",
     "expo": "~58.0.19",
+    "expo-constants": "~58.0.13",
+    "expo-linking": "~58.0.14",
+    "expo-router": "~58.0.26",
+    "expo-splash-screen": "~58.0.11",
     "expo-status-bar": "~58.0.4",
     "react": "19.3.0",
-    "react-native": "0.88.0"
+    "react-dom": "^19.3.0",
+    "react-native": "0.88.0",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-screens": "~4.30.0",
+    "react-native-web": "^0.21.4"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^14.1.0",
+    "@types/jest": "^30.0.0",
     "@types/react": "~19.3.0",
+    "@types/react-test-renderer": "^19.3.0",
+    "babel-preset-expo": "~58.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "^58.0.4",
+    "jest": "^30.5.2",
+    "jest-expo": "~58.0.12",
+    "prettier": "^3.9.10",
+    "react-test-renderer": "^19.3.0",
     "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "export:web": "expo export --platform web",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run export:web"
   },
-  "private": true
+  "private": true,
+  "description": "Offline-first React Native field operations app: local-first writes, an outbox sync queue with retry and conflict resolution, and a simulated remote you can break on purpose. Personal portfolio project.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }
